@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,22 +7,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <None Remove="src\01 Backend\Controllers\.gitkeep" />
+    <None Remove="src\01 Backend\Models\.gitkeep" />
+    <None Remove="src\01 Backend\Services\.gitkeep" />
+    <None Remove="src\02 Frontend\assets\.gitkeep" />
+    <None Remove="src\02 Frontend\components\.gitkeep" />
+    <None Remove="src\02 Frontend\services\.gitkeep" />
+    <None Remove="src\03 tests\BackendTests\.gitkeep" />
+    <None Remove="src\03 tests\FrontendTests\.gitkeep" />
+    <None Remove="src\04 build\.gitkeep" />
+    <None Remove="src\05 ocs\.gitkeep" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\02 Frontend\" />
-    <Folder Include="src\02 Frontend\components\" />
-    <Folder Include="src\02 Frontend\services\" />
-    <Folder Include="src\04 build\" />
-    <Folder Include="src\03 tests\FrontendTests\" />
-    <Folder Include="src\03 tests\BackendTests\" />
-    <Folder Include="src\05 ocs\" />
-    <Folder Include="src\03 tests\" />
-    <Folder Include="src\02 Frontend\assets\" />
-    <Folder Include="src\01 Backend\Services\" />
-    <Folder Include="src\01 Backend\Models\" />
-    <Folder Include="src\01 Backend\Controllers\" />
+    <Compile Include="src\01 Backend\Controllers\.gitkeep" />
+    <Compile Include="src\01 Backend\Models\.gitkeep" />
+    <Compile Include="src\01 Backend\Services\.gitkeep" />
+    <Compile Include="src\02 Frontend\assets\.gitkeep" />
+    <Compile Include="src\02 Frontend\components\.gitkeep" />
+    <Compile Include="src\02 Frontend\services\.gitkeep" />
+    <Compile Include="src\03 tests\BackendTests\.gitkeep" />
+    <Compile Include="src\03 tests\FrontendTests\.gitkeep" />
+    <Compile Include="src\04 build\.gitkeep" />
+    <Compile Include="src\05 ocs\.gitkeep" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
 </Project>
