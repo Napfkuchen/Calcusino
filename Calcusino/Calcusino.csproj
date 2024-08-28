@@ -7,29 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="src\01 Backend\Controllers\.gitkeep" />
-    <None Remove="src\01 Backend\Models\.gitkeep" />
-    <None Remove="src\01 Backend\Services\.gitkeep" />
-    <None Remove="src\02 Frontend\assets\.gitkeep" />
-    <None Remove="src\02 Frontend\components\.gitkeep" />
-    <None Remove="src\02 Frontend\services\.gitkeep" />
-    <None Remove="src\03 tests\BackendTests\.gitkeep" />
-    <None Remove="src\03 tests\FrontendTests\.gitkeep" />
-    <None Remove="src\04 build\.gitkeep" />
-    <None Remove="src\05 ocs\.gitkeep" />
+    <None Remove="src\Frontend\assets\.gitkeep" />
+    <None Remove="src\Frontend\components\.gitkeep" />
+    <None Remove="src\Frontend\services\.gitkeep" />
+    <None Remove="src\tests\BackendTests\.gitkeep" />
+    <None Remove="src\tests\FrontendTests\.gitkeep" />
+    <None Remove="src\build\.gitkeep" />
+    <None Remove="src\docs\.gitkeep" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="src\01 Backend\Controllers\.gitkeep" />
-    <Compile Include="src\01 Backend\Models\.gitkeep" />
-    <Compile Include="src\01 Backend\Services\.gitkeep" />
-    <Compile Include="src\02 Frontend\assets\.gitkeep" />
-    <Compile Include="src\02 Frontend\components\.gitkeep" />
-    <Compile Include="src\02 Frontend\services\.gitkeep" />
-    <Compile Include="src\03 tests\BackendTests\.gitkeep" />
-    <Compile Include="src\03 tests\FrontendTests\.gitkeep" />
-    <Compile Include="src\04 build\.gitkeep" />
-    <Compile Include="src\05 ocs\.gitkeep" />
+    <Compile Include="src\Frontend\assets\.gitkeep" />
+    <Compile Include="src\Frontend\components\.gitkeep" />
+    <Compile Include="src\Frontend\services\.gitkeep" />
+    <Compile Include="src\tests\BackendTests\.gitkeep" />
+    <Compile Include="src\tests\FrontendTests\.gitkeep" />
+    <Compile Include="src\build\.gitkeep" />
+    <Compile Include="src\docs\.gitkeep" />
   </ItemGroup>
 
   <ItemGroup>
