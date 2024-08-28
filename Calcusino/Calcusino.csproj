@@ -10,4 +10,19 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="src\02 Frontend\" />
+    <Folder Include="src\02 Frontend\components\" />
+    <Folder Include="src\02 Frontend\services\" />
+    <Folder Include="src\04 build\" />
+    <Folder Include="src\03 tests\FrontendTests\" />
+    <Folder Include="src\03 tests\BackendTests\" />
+    <Folder Include="src\05 ocs\" />
+    <Folder Include="src\03 tests\" />
+    <Folder Include="src\02 Frontend\assets\" />
+    <Folder Include="src\01 Backend\Services\" />
+    <Folder Include="src\01 Backend\Models\" />
+    <Folder Include="src\01 Backend\Controllers\" />
+  </ItemGroup>
+
 </Project>
