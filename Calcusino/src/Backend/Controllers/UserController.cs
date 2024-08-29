@@ -7,7 +7,7 @@ namespace Calcusino.Controllers
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public UserController(UserService userService)
         {
             _userService = userService;
         }
@@ -23,6 +23,15 @@ namespace Calcusino.Controllers
             return Ok(user);
         }
 
+        public ActionResult<UserModel> CreateUser(string userName)
+        {
+            var user = _userService.CreateUser(userName);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
         // Weitere Actions wie CreateUser, UpdateUser, DeleteUser...
     }
 }

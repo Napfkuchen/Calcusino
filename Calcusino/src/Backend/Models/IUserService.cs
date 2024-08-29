@@ -6,6 +6,7 @@ namespace Calcusino.Controllers
     {
         UserModel GetUserById(int id);
         void CreateUser(UserModel user);
+        object CreateUser(string userName);
         // Weitere methoden wie UpdateUser, DeleteUser...
     }
 
@@ -13,20 +14,30 @@ namespace Calcusino.Controllers
     {
         private readonly IDataRepository _repository;
 
-        public UserService(IDataRepository repository)
-        {
-            _repository = repository;
+        private UserService(IDataRepository repository)
+        {   
+            _repository = repository;   
         }
 
         public UserModel GetUserById(int id)
-        {
-            return _repository.FindById<UserModel>(id);
+        {   
+            return _repository.FindById<UserModel>(id); 
         }
 
         public void CreateUser(UserModel user)
-        {
+        {   
             object value = _repository.Add(user);
             // Weitere Logik wie Validierungen, Event-Triggering...
+        }
+
+        internal object CreateUser(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        object IUserService.CreateUser(string userName)
+        {
+            throw new NotImplementedException();
         }
 
         // Weitere methoden wie UpdateUser, DeleteUser...
