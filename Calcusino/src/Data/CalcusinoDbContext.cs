@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Calcusino.Models;
-using Calcusino.Controllers;
+using Calcusino.src.Backend.Models;
 
 namespace Calcusino.Data
 {

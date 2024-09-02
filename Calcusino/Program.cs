@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Calcusino.Controllers;
 using Calcusino.Data;
 using Microsoft.OpenApi.Models;
+using Calcusino.src.Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;

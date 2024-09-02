@@ -1,5 +1,6 @@
-﻿namespace Calcusino.Controllers
-{    public class UserModel
+﻿namespace Calcusino.src.Backend.Models
+{
+    public class UserModel
     {
         public int Id { get; set; }
         public string UserName { get; set; } = string.Empty;
