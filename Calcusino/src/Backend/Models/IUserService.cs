@@ -1,45 +1,56 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Calcusino.Controllers
+﻿namespace Calcusino.Controllers
 {
     public interface IUserService
     {
         UserModel GetUserById(int id);
         void CreateUser(UserModel user);
         object CreateUser(string userName);
-        // Weitere methoden wie UpdateUser, DeleteUser...
     }
 
     public class UserService : IUserService
     {
         private readonly IDataRepository _repository;
 
-        private UserService(IDataRepository repository)
+        public UserService(IDataRepository repository)
         {   
             _repository = repository;   
         }
 
         public UserModel GetUserById(int id)
-        {   
-            return _repository.FindById<UserModel>(id); 
+        {
+            return _repository.FindById<UserModel>(id);
         }
 
         public void CreateUser(UserModel user)
-        {   
-            object value = _repository.Add(user);
-            // Weitere Logik wie Validierungen, Event-Triggering...
-        }
-
-        internal object CreateUser(string userName)
         {
-            throw new NotImplementedException();
+            _repository.Add(user);
         }
-
-        object IUserService.CreateUser(string userName)
+                public object CreateUser(string userName)
         {
-            throw new NotImplementedException();
-        }
+            // Prüfen, ob der Benutzername bereits existiert
+            var existingUser = _repository.FindBy<UserModel>(u => u.UserName == userName);
 
-        // Weitere methoden wie UpdateUser, DeleteUser...
+            if (existingUser != null)
+            {
+                // Wenn der Benutzername bereits existiert, werfen wir eine Ausnahme
+                throw new InvalidOperationException($"Ein Benutzer mit dem Benutzernamen {userName} existiert bereits.");
+            }
+
+            // Wenn der Benutzername nicht existiert, erstellen wir einen neuen Benutzer
+            var newUser = new UserModel
+            {
+                UserName = userName,
+                Password = "defaultPassword",
+                Email = $"{userName}@example.com",
+                Punktestand = 0,
+                Spielzeit = 0,
+                OnlineStatus = false
+            };
+
+            // Speichern des neuen Benutzers in der Datenbank
+            _repository.Add(newUser);
+
+            return newUser;
+        }
     }
 }

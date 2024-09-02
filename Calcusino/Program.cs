@@ -1,31 +1,49 @@
 using Microsoft.EntityFrameworkCore;
+using Calcusino.Controllers;
 using Calcusino.Data;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Passwort aus der Umgebungsvariablen holen
-var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
-var connectionString = $"Server=localhost;Database=calcusino;User=root;Password={password};";
-
-// Add services to the container.
-// Füge den DbContext hinzu
+var configuration = builder.Configuration;
 builder.Services.AddDbContext<CalcusinoDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("CalcusinoDatabase")
-    ?? throw new InvalidOperationException("Connection string 'CalcusinoDatabase' not found.")));
+    options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 26))));
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IDataRepository, DataRepository>();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Calcusino API",
+        Description = "API für die Calcusino-Anwendung",
+        Contact = new OpenApiContact
+        {
+            Name = "Dein Name",
+            Email = "deine.email@example.com",
+            Url = new Uri("https://yourwebsite.com"),
+        },
+    });
+});
+
+// Nach der Service-Konfiguration wird die Anwendung gebaut
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Middleware-Konfiguration
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calcusino API v1");
+        c.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Calcusino.Models;
+using Calcusino.Controllers;
 
 namespace Calcusino.Data
 {
@@ -10,8 +11,7 @@ namespace Calcusino.Data
         {
         }
 
-        // Hinzufügen von DbSets
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserModel> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
