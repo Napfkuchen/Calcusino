@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Calcusino.Models;
 
 namespace Calcusino.Data
 {

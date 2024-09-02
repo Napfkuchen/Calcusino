@@ -1,18 +1,17 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Calcusino.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Passwort aus der Umgebungsvariablen holen
+var password = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
+var connectionString = $"Server=localhost;Database=calcusino;User=root;Password={password};";
 
 // Add services to the container.
 // Füge den DbContext hinzu
 builder.Services.AddDbContext<CalcusinoDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("CalcusinoDatabase")));
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+    options.UseMySQL(builder.Configuration.GetConnectionString("CalcusinoDatabase")
+    ?? throw new InvalidOperationException("Connection string 'CalcusinoDatabase' not found.")));
 
 var app = builder.Build();
 
