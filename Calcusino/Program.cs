@@ -12,6 +12,7 @@ builder.Services.AddDbContext<CalcusinoDbContext>(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDataRepository, DataRepository>();
 builder.Services.AddSwaggerGen(c =>
@@ -30,7 +31,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Nach der Service-Konfiguration wird die Anwendung gebaut
 var app = builder.Build();
 
 // Middleware-Konfiguration
@@ -48,3 +48,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+});

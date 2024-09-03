@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="src\Frontend\assets\.gitkeep" />
-    <None Remove="src\Frontend\components\.gitkeep" />
-    <None Remove="src\Frontend\services\.gitkeep" />
+    <None Remove="src\Frontend\Assets\.gitkeep" />
+    <None Remove="src\Frontend\Components\.gitkeep" />
+    <None Remove="src\Frontend\Services\.gitkeep" />
     <None Remove="src\tests\BackendTests\.gitkeep" />
     <None Remove="src\tests\FrontendTests\.gitkeep" />
     <None Remove="src\build\.gitkeep" />
-    <None Remove="src\docs\.gitkeep" />
+    <None Remove="src\Docs\.gitkeep" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,13 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="src\Frontend\assets\.gitkeep" />
-    <Compile Include="src\Frontend\components\.gitkeep" />
-    <Compile Include="src\Frontend\services\.gitkeep" />
+    <Compile Include="src\Frontend\Assets\.gitkeep" />
+    <Compile Include="src\Frontend\Components\.gitkeep" />
+    <Compile Include="src\Frontend\Services\.gitkeep" />
     <Compile Include="src\tests\BackendTests\.gitkeep" />
     <Compile Include="src\tests\FrontendTests\.gitkeep" />
     <Compile Include="src\build\.gitkeep" />
-    <Compile Include="src\docs\.gitkeep" />
+    <Compile Include="src\Docs\.gitkeep" />
   </ItemGroup>
 
   <ItemGroup>
