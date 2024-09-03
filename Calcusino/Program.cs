@@ -12,15 +12,20 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<CalcusinoDbContext>(options =>
     options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 26))));
+
 // Add services for controllers
 builder.Services.AddControllers();
+
 // Add support for API endpoint exploration in Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
+
 // Add Razor Pages support
 builder.Services.AddRazorPages();
+
 // Dependency Injection for custom services and repositories
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDataRepository, DataRepository>();
+
 // Add Swagger/OpenAPI support for API documentation
 builder.Services.AddSwaggerGen(c =>
 {
@@ -55,16 +60,28 @@ if (app.Environment.IsDevelopment())
 
 // Redirect HTTP to HTTPS for better security
 app.UseHttpsRedirection();
+
 // Serve static files like CSS, JS, and images
 app.UseStaticFiles();
+
 // Enable routing to map requests to the correct endpoints
 app.UseRouting();
+
 // Enable authorization middleware (if there is any authorization logic)
 app.UseAuthorization();
+
 // Map controller routes (API endpoints)
 app.MapControllers();
+
 // Map Razor Pages routes (for page navigation in the frontend)
 app.MapRazorPages();
+
+// Optional: Redirecting to the login page at program start
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/Login");
+    return Task.CompletedTask;
+});
 
 // Run the application
 app.Run();

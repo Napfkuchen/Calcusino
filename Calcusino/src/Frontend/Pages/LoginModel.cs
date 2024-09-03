@@ -15,8 +15,8 @@ namespace Calcusino.src.Frontend.Pages
         {
             if (Username == "test" && Password == "password")
             {
-                // Erfolgreiches Login
-                return RedirectToPage("/Index");
+                // Erfolgreiches Login - Hier könntest du entweder eine Nachricht anzeigen oder zu einer vorhandenen Seite weiterleiten
+                return Page(); // Bleibt auf der Login-Seite
             }
 
             // Fehlgeschlagenes Login
