@@ -20,7 +20,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 // Add Razor Pages support
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorPagesOptions(options => {
+    options.RootDirectory = "/src/Frontend/Pages";
+});
 
 // Dependency Injection for custom services and repositories
 builder.Services.AddScoped<IUserService, UserService>();
@@ -46,6 +48,7 @@ builder.Services.AddSwaggerGen(c =>
 // Build the app
 var app = builder.Build();
 
+
 // Middleware configuration
 if (app.Environment.IsDevelopment())
 {
@@ -56,6 +59,12 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calcusino API v1");
         c.RoutePrefix = string.Empty; // Makes Swagger UI the root of the application
     });
+}
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 // Redirect HTTP to HTTPS for better security
@@ -77,7 +86,7 @@ app.MapControllers();
 app.MapRazorPages();
 
 // Optional: Redirecting to the login page at program start
-app.MapGet("/", context =>
+app.MapGet("/", context => 
 {
     context.Response.Redirect("/Login");
     return Task.CompletedTask;

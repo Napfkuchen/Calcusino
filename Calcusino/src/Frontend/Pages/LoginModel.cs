@@ -13,15 +13,13 @@ namespace Calcusino.src.Frontend.Pages
 
         public IActionResult OnPost()
         {
-            if (Username == "test" && Password == "password")
+            if (Username == "admin" && Password == "password")
             {
-                // Erfolgreiches Login - Hier könntest du entweder eine Nachricht anzeigen oder zu einer vorhandenen Seite weiterleiten
-                return Page(); // Bleibt auf der Login-Seite
+                return RedirectToPage("/Index"); // Erfolgreiches Login
             }
 
-            // Fehlgeschlagenes Login
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            return Page();
+            return Page(); // Fehler beim Login
         }
     }
 }
