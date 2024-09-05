@@ -34,7 +34,8 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:44337;http://localhost:56825"
     },
     "Calcusino": {
       "commandName": "Project",
