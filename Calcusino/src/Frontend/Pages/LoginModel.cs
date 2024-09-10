@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.Mozilla;
 
 namespace Calcusino.src.Frontend.Pages
 {
@@ -15,11 +16,16 @@ namespace Calcusino.src.Frontend.Pages
         {
             if (Username == "admin" && Password == "password")
             {
-                return RedirectToPage("/Index"); // Erfolgreiches Login
+                return RedirectToPage("/Index"); // Successfull Login
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            return Page(); // Fehler beim Login
+            return Page(); // Error on Login
+        }
+
+        public IActionResult OnPostRegister()
+        {
+            return RedirectToPage("/Register"); // Forwarding to Registration page
         }
     }
 }

@@ -88,8 +88,14 @@ app.MapRazorPages();
 // Optional: Redirecting to the login page at program start
 app.MapGet("/", context => 
 {
-    context.Response.Redirect("/Login");
+    context.Response.Redirect("(/src/Frontend/Pages/Login");
     return Task.CompletedTask;
+});
+
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"Request URL: {context.Request.Path}");
+    await next.Invoke();
 });
 
 // Run the application
