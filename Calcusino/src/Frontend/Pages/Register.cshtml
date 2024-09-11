@@ -1,34 +1,38 @@
 ﻿@page
 @model Calcusino.src.Frontend.Pages.RegisterModel
 
-<h2>Register</h2>
-<form method="post">
-    <div style="margin-bottom: 10px;">
-        <label asp-for="Username" style="width: 150px; display: inline-block;">Username: </label>
-        <input asp-for="Username" />
+<div class="centered-container">
+    <div class="form-container">
+        <h2>Register</h2>
+        <form method="post">
+            <div style="margin-bottom: 10px;">
+                <label asp-for="Username" style="width: 150px; display: inline-block;">Username: </label>
+                <input asp-for="Username" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label asp-for="Password" style="width: 150px; display: inline-block;">Password: </label>
+                <input asp-for="Password" type="password" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label asp-for="Repeat Password" style="width: 150px; display: inline-block;">Repeat Password: </label>
+                <input asp-for="Repeat Password" type="password" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label asp-for="First Name" style="width: 150px; display: inline-block;">First Name: </label>
+                <input asp-for="First Name"/>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label asp-for="Last Name" style="width: 150px; display: inline-block;">Last Name: </label>
+                <input asp-for="Last Name" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label asp-for="Email" style="width: 150px; display: inline-block;">Email: </label>
+                <input asp-for="Email" />
+            </div>
+            <div>
+                <button type="submit">Create new User</button>
+            </div>
+        </form>
+        <a href="/Login" class="btn btn-primary">Back to Login-Page</a>
     </div>
-    <div style="margin-bottom: 10px;">
-        <label asp-for="Password" style="width: 150px; display: inline-block;">Password: </label>
-        <input asp-for="Password" type="password" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label asp-for="Repeat Password" style="width: 150px; display: inline-block;">Repeat Password: </label>
-        <input asp-for="Repeat Password" type="password" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label asp-for="First Name" style="width: 150px; display: inline-block;">First Name: </label>
-        <input asp-for="First Name"/>
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label asp-for="Last Name" style="width: 150px; display: inline-block;">Last Name: </label>
-        <input asp-for="Last Name" />
-    </div>
-    <div style="margin-bottom: 10px;">
-        <label asp-for="Email" style="width: 150px; display: inline-block;">Email: </label>
-        <input asp-for="Email" />
-    </div>
-    <div>
-        <button type="submit">Create new User</button>
-    </div>
-</form>
-<a href="/Login" class="btn btn-primary">Back to Login-Page</a>
+</div>

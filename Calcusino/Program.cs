@@ -82,6 +82,9 @@ app.UseAuthorization();
 // Map controller routes (API endpoints)
 app.MapControllers();
 
+// User of static files
+app.UseStaticFiles();
+
 // Map Razor Pages routes (for page navigation in the frontend)
 app.MapRazorPages();
 

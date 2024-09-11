@@ -1,16 +1,20 @@
 ﻿@page
 @model Calcusino.src.Frontend.Pages.LoginModel
 
-<h2>Login</h2>
-<form method="post">
-    <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
+<div class="centered-container">
+    <div class="form-container">
+        <h2>Login</h2>
+        <form method="post">
+            <div>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" />
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" />
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <a href="/Register" class="btn btn-primary">No account? Register here.</a>
     </div>
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-    </div>
-    <button type="submit">Login</button>
-</form>
-<a href="/Register" class="btn btn-primary">No account? Register here.</a>
+</div>
