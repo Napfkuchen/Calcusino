@@ -5,13 +5,25 @@
     height: 100vh;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    border: 1px solid blue; /* Für Testzwecke */
+}
+
 .form-container {
-    border: 1px solid #ccc;
+    border: 2px solid green; /* Für Testzwecke */
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-body {
-    background-color: red;
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }

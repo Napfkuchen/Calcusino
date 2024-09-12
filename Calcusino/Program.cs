@@ -3,6 +3,8 @@ using Calcusino.Controllers;
 using Calcusino.Data;
 using Microsoft.OpenApi.Models;
 using Calcusino.src.Backend.Services;
+using Microsoft.Extensions.FileProviders;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 // Configuration for accessing the app's settings
@@ -48,7 +50,6 @@ builder.Services.AddSwaggerGen(c =>
 // Build the app
 var app = builder.Build();
 
-
 // Middleware configuration
 if (app.Environment.IsDevelopment())
 {
@@ -57,7 +58,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Calcusino API v1");
-        c.RoutePrefix = string.Empty; // Makes Swagger UI the root of the application
+        c.RoutePrefix = "swagger"; // Set Swagger UI at /swagger
     });
 }
 
@@ -71,7 +72,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Serve static files like CSS, JS, and images
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    RequestPath = ""
+});
 
 // Enable routing to map requests to the correct endpoints
 app.UseRouting();
@@ -82,19 +87,20 @@ app.UseAuthorization();
 // Map controller routes (API endpoints)
 app.MapControllers();
 
-// User of static files
-app.UseStaticFiles();
-
 // Map Razor Pages routes (for page navigation in the frontend)
 app.MapRazorPages();
 
-// Optional: Redirecting to the login page at program start
-app.MapGet("/", context => 
+// Optional: Redirecting to the login page at program start, but avoid conflicts with Swagger
+if (!app.Environment.IsDevelopment())
 {
-    context.Response.Redirect("(/src/Frontend/Pages/Login");
-    return Task.CompletedTask;
-});
+    app.MapGet("/", context =>
+    {
+        context.Response.Redirect("/src/Frontend/Pages/Login");
+        return Task.CompletedTask;
+    });
+}
 
+// Request Logging
 app.Use(async (context, next) =>
 {
     Console.WriteLine($"Request URL: {context.Request.Path}");
